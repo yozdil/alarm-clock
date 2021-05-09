@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Container, Header, Segment, Divider, Button } from "semantic-ui-react";
+import { Container, Header, Segment, Divider } from "semantic-ui-react";
 import Adjust from "./components/Adjust";
 import Clock from "./components/Clock";
 

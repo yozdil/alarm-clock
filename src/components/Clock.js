@@ -3,7 +3,6 @@ import { Header, Segment, Button, Icon } from "semantic-ui-react";
 const Clock = ({
   timeLeft,
   setTimeLeft,
-  playSound,
   stopSound,
   isPlaying,
   setIsPlaying,
