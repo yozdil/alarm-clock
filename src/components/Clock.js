@@ -10,6 +10,8 @@ const Clock = ({
   sessionLength,
   setSessionLength,
   setBreakLength,
+  currState,
+  setCurrState,
 }) => {
   const handleReset = () => {
     stopSound();
@@ -32,7 +34,7 @@ const Clock = ({
   return (
     <Segment textAlign="center">
       <Header id="timer-label" as="h2">
-        {"Session"}
+        {currState}
       </Header>
       <Header id="time-left">{displayTime()}</Header>
       <Button.Group>

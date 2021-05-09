@@ -1,15 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container, Header, Segment, Divider, Button } from "semantic-ui-react";
 import Adjust from "./components/Adjust";
 import Clock from "./components/Clock";
 
 function App() {
+  const alarm = useRef();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
   const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
+  const [currState, setCurrState] = useState("Session")
 
-  const alarm = useRef();
+  // useEffect(() => {
+  //   setTimeLeft(timeLeft);
+  // }, [timeLeft]);
 
   const playSound = () => {
     alarm.current.play();
@@ -45,6 +50,8 @@ function App() {
             sessionLength={sessionLength}
             setSessionLength={setSessionLength}
             setBreakLength={setBreakLength}
+            currState={currState}
+            setCurrState={setCurrState}
           />
           <a href="https://yamacozdil.com/">
             <Header floated="right" color="blue" as="h4">
