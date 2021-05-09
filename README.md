@@ -4,9 +4,9 @@
 
 ![alt text](public/app.gif)
 
-[25 + 5 Clocl](https://csb-wfx43.netlify.app/) was done for Front End Development Libraries Certification at [freeCodeCamp](https://www.freecodecamp.org). At it's core it uses React and Semantic UI for simple visuals and mobile responsiveness. It plays a sound in between session and break changes.
+[25 + 5 Clocl](https://csb-h3ydg.netlify.app/) was done for Front End Development Libraries Certification at [freeCodeCamp](https://www.freecodecamp.org). At it's core it uses React and Semantic UI for simple visuals and mobile responsiveness. It plays a sound in between session and break changes.
 
-### ✨ [Demo](https://csb-qk26u.netlify.app/)
+### ✨ [Demo](https://csb-h3ydg.netlify.app/)
 
 
 ## Install
