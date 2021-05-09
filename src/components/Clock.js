@@ -21,7 +21,7 @@ const Clock = ({
     setSessionLength(25);
     setIsPlaying(false);
     setTimeout(() => {
-      setTimeLeft(sessionLength * 60);
+      setTimeLeft(1500);
     }, 1000);
   };
 
