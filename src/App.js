@@ -6,6 +6,7 @@ import Clock from "./components/Clock";
 function App() {
   const alarm = useRef();
 
+  const [wobble, setWobble] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false);
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
@@ -45,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <Segment padded="very">
+        <Segment id="alarm-clock" padded="very" wobble={wobble} onAnimationEnd={() => setWobble(0)}>
           <Header as="h1" textAlign="center">
             25 + 5 Clock
           </Header>
@@ -59,6 +60,7 @@ function App() {
           />
           <Divider />
           <Clock
+          setWobble={setWobble}
             timeLeft={timeLeft}
             setTimeLeft={setTimeLeft}
             playSound={playSound}

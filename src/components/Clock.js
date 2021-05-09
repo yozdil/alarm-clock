@@ -11,8 +11,10 @@ const Clock = ({
   setBreakLength,
   currState,
   setCurrState,
+  setWobble,
 }) => {
   const handleReset = () => {
+    setWobble(1)
     stopSound();
     setCurrState("Session");
     setBreakLength(5);
