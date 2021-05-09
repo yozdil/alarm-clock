@@ -7,7 +7,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
-  const [remaining, setRemaining] = useState(sessionLength * 60);
+  const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
 
   const alarm = useRef();
 
@@ -36,8 +36,8 @@ function App() {
           />
           <Divider />
           <Clock
-            remaining={remaining}
-            setRemaining={setRemaining}
+            timeLeft={timeLeft}
+            setTimeLeft={setTimeLeft}
             playSound={playSound}
             stopSound={stopSound}
             isPlaying={isPlaying}

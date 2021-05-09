@@ -1,8 +1,8 @@
 import { Header, Segment, Button, Icon } from "semantic-ui-react";
 
 const Clock = ({
-  remaining,
-  setRemaining,
+  timeLeft,
+  setTimeLeft,
   playSound,
   stopSound,
   isPlaying,
@@ -22,12 +22,19 @@ const Clock = ({
     return setIsPlaying(!isPlaying);
   };
 
+  const displayTime = () => {
+    let min = Math.floor(timeLeft / 60)
+    let sec = timeLeft - (min * 60)
+    return `${(min < 10) ? `0${min}` : min} : ${(sec < 10) ? `0${sec}` : sec}`
+  }
+  
+
   return (
     <Segment textAlign="center">
       <Header id="timer-label" as="h2">
         {"Session"}
       </Header>
-      <Header id="time-left">{sessionLength}:00</Header>
+      <Header id="time-left">{displayTime()}</Header>
       <Button.Group>
         <Button id="start_stop" onClick={() => handlePlay()}>
           {isPlaying ? <Icon name="pause"></Icon> : <Icon name="play"></Icon>}
