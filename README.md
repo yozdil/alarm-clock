@@ -4,8 +4,6 @@
 
 > An Alrm Clock
 
-### 🏠 [Homepage](www.google.com)
-
 ### ✨ [Demo](www.google.com)
 
 ## Install
