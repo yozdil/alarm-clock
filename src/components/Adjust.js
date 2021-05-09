@@ -1,23 +1,30 @@
 import { Header, Segment, Button, Icon } from "semantic-ui-react";
 
-const increment = (data, setData) => {
-  if (data < 60) {
-    return setData(data + 1);
-  }
-};
-const decrement = (data, setData) => {
-  if (data > 0) {
-    return setData(data - 1);
-  }
-};
-
 const Adjust = ({
   isPlaying,
   breakLength,
   setBreakLength,
   sessionLength,
   setSessionLength,
+  setTimeLeft,
 }) => {
+  const increment = (data, setData, bool) => {
+    if (data < 60) {
+      if (bool) {
+        setTimeLeft((data + 1) * 60);
+      }
+      return setData(data + 1);
+    }
+  };
+  const decrement = (data, setData, bool) => {
+    if (data > 1) {
+      if (bool) {
+        setTimeLeft((data - 1) * 60);
+      }
+      return setData(data - 1);
+    }
+  };
+
   return (
     <Segment.Group horizontal>
       <Segment textAlign="center">
@@ -25,16 +32,24 @@ const Adjust = ({
         <Header id="break-length">{breakLength}</Header>
         <Button.Group>
           <Button
-            id="break-increment"
-            onClick={isPlaying ? null : () => increment(breakLength, setBreakLength)}
-          >
-            <Icon name="angle up"></Icon>
-          </Button>
-          <Button
             id="break-decrement"
-            onClick={isPlaying ? null : () => decrement(breakLength, setBreakLength)}
+            onClick={
+              isPlaying
+                ? null
+                : () => decrement(breakLength, setBreakLength, false)
+            }
           >
             <Icon name="angle down"></Icon>
+          </Button>
+          <Button
+            id="break-increment"
+            onClick={
+              isPlaying
+                ? null
+                : () => increment(breakLength, setBreakLength, false)
+            }
+          >
+            <Icon name="angle up"></Icon>
           </Button>
         </Button.Group>
       </Segment>
@@ -43,16 +58,24 @@ const Adjust = ({
         <Header id="session-length">{sessionLength}</Header>
         <Button.Group>
           <Button
-            id="session-increment"
-            onClick={isPlaying ? null : () => increment(sessionLength, setSessionLength)}
-          >
-            <Icon name="angle up"></Icon>
-          </Button>
-          <Button
             id="session-decrement"
-            onClick={isPlaying ? null : () => decrement(sessionLength, setSessionLength)}
+            onClick={
+              isPlaying
+                ? null
+                : () => decrement(sessionLength, setSessionLength, true)
+            }
           >
             <Icon name="angle down"></Icon>
+          </Button>
+          <Button
+            id="session-increment"
+            onClick={
+              isPlaying
+                ? null
+                : () => increment(sessionLength, setSessionLength, true)
+            }
+          >
+            <Icon name="angle up"></Icon>
           </Button>
         </Button.Group>
       </Segment>

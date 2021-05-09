@@ -15,9 +15,13 @@ const Clock = ({
 }) => {
   const handleReset = () => {
     stopSound();
+    setCurrState("Session");
     setBreakLength(5);
     setSessionLength(25);
     setIsPlaying(false);
+    setTimeout(() => {
+      setTimeLeft(sessionLength * 60);
+    }, 1000);
   };
 
   const handlePlay = () => {
@@ -25,11 +29,10 @@ const Clock = ({
   };
 
   const displayTime = () => {
-    let min = Math.floor(timeLeft / 60)
-    let sec = timeLeft - (min * 60)
-    return `${(min < 10) ? `0${min}` : min} : ${(sec < 10) ? `0${sec}` : sec}`
-  }
-  
+    let min = Math.floor(timeLeft / 60);
+    let sec = timeLeft - min * 60;
+    return `${min < 10 ? `0${min}` : min} : ${sec < 10 ? `0${sec}` : sec}`;
+  };
 
   return (
     <Segment textAlign="center">

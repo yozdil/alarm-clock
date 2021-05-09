@@ -10,11 +10,29 @@ function App() {
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
   const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
-  const [currState, setCurrState] = useState("Session")
+  const [currState, setCurrState] = useState("Session");
 
-  // useEffect(() => {
-  //   setTimeLeft(timeLeft);
-  // }, [timeLeft]);
+  useEffect(() => {
+    const switchState = () => {
+      if (currState === "Session") {
+        setCurrState("Break");
+        setTimeLeft(breakLength * 60);
+      } else {
+        setCurrState("Session");
+        setTimeLeft(sessionLength * 60);
+      }
+    };
+
+    if (isPlaying) {
+      setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      if (timeLeft === 0) {
+        playSound();
+        switchState();
+      }
+    }
+  }, [timeLeft, isPlaying, breakLength, currState, sessionLength]);
 
   const playSound = () => {
     alarm.current.play();
@@ -27,7 +45,6 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <Button onClick={() => playSound()}>HELLO</Button>
         <Segment padded="very">
           <Header as="h1" textAlign="center">
             25 + 5 Clock
@@ -38,6 +55,7 @@ function App() {
             sessionLength={sessionLength}
             setBreakLength={setBreakLength}
             setSessionLength={setSessionLength}
+            setTimeLeft={setTimeLeft}
           />
           <Divider />
           <Clock
