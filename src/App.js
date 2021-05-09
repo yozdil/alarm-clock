@@ -1,13 +1,15 @@
-import {
-  Container,
-  Header,
-  Segment,
-  Divider,
-} from "semantic-ui-react";
+import { useRef, useState } from "react";
+import { Container, Header, Segment, Divider } from "semantic-ui-react";
 import Adjust from "./components/Adjust";
 import Clock from "./components/Clock";
 
 function App() {
+  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(5);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const alarm = useRef();
+
   return (
     <div className="App">
       <Container fluid>
@@ -25,6 +27,12 @@ function App() {
           </a>
         </Segment>
       </Container>
+      <audio
+        id="beep"
+        ref={alarm}
+        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+        type="audio"
+      />
     </div>
   );
 }
